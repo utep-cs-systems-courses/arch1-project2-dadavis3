@@ -39,22 +39,22 @@ void switch_interrupt_handler()
   if(button1){
     // switch_state_down = button1;
     buzzer_init();
-    play_song();
+    play_sounds();
   }
-  if(SW2){
+  if(button2){
     switch_state_down = button2;    /* 0 when SW2 is up */
     switch_state_changed = 1;
     led_update();
   }
   if(button3){
-    switch_state_down = button3;/* 0 when SW3 is up */
+    switch_state_down = button3; /* 0 when SW3 is up */
     buzzer_init();
     stop_buzzer();
   }
   if(button4){
-    configureClocks();/* setup master oscillator, CPU & peripheral clocks */
+    //configureClocks(); /* setup master oscillator, CPU & peripheral clocks */
     led_init_dim();
     speed+=20;
-    enableWDTInterrupts();/* enable periodic interrupt */
+   _enable_interrupts(); /* enable periodic interrupt */
   }
 }
