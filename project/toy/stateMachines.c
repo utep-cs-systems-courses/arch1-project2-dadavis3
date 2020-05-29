@@ -1,6 +1,6 @@
 #include <msp430.h>
 #include "stateMachines.h"
-#include "led.h"
+#include "ledDim.h"
 
 // state variables 
 static enum {off=0, dim=1, bright=2} ledMode;

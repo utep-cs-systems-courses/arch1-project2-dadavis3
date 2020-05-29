@@ -3,7 +3,9 @@
 
 void buzzer_init();
 void buzzer_set_period(short cycles);
-void stop_buzzer();
-void play_sounds();
+void song_1();
+void song_2();
+void song_3();
+void song_4();
 
 #endif // included
