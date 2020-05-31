@@ -1,0 +1,46 @@
+SWITCH_INTERRUPT_HANDLER:
+	PUSH    r0
+	CALL    SWITCH_UPDATE_INTERRUPT_SENSE
+	MOV     &p2val, r12 
+	MOV     &SW1, r13
+	AND     r13, r12
+	CMP     r12, r13
+	JNE     .L8
+	MOV     1, SWITCH_STATE_DOWN
+	JMP     .L9
+.L8:
+	PUSH    r0
+	CALL    SWITCH_UPDATE_INTERRUPT_SENSE
+	MOV     &p2val, r12 
+	MOV     &SW2, r13
+	AND     r13, r12
+	CMP     r12, r13
+	JNE     .L10
+	MOV     1, SWITCH_STATE_DOWN
+	JMP     .L9
+
+.L10:
+	PUSH    r0
+	CALL    SWITCH_UPDATE_INTERRUPT_SENSE
+	MOV     &p2val, r12 
+	MOV     &SW3, r13
+	AND     r13, r12
+	CMP     r12, r13
+	JNE     .L11
+	MOV     1, SWITCH_STATE_DOWN
+	JMP     .L9
+
+.L11:
+	PUSH    r0
+	CALL    SWITCH_UPDATE_INTERRUPT_SENSE
+	MOV     &p2val, r12 
+	MOV     &SW4, r13
+	AND     r13, r12
+	CMP     r12, r13
+	JNE     .L9
+	MOV     1, SWITCH_STATE_DOWN
+.L9:
+	CALL    LED_UPDATE
+	NOP
+	POP     r0
+ 
